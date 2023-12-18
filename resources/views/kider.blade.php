@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+@section('title')
+Kider
+@endsection
 @include('includes.head')
 
 <body>

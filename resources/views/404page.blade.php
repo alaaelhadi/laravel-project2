@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+@section('title')
+Page 404
+@endsection
 @include('includes.head')
 
 <body>
