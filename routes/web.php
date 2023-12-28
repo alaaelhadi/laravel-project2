@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('kider',[KidController::class, 'index'])->name('index');
+Route::get('kider',[KidController::class, 'index'])->middleware('verified')->name('index');
 
 Route::get('page',[KidController::class, 'create']);
 
@@ -39,3 +39,7 @@ Route::get('action',[KidController::class, 'action'])->name('action');
 Route::get('appointment',[KidController::class, 'appointment'])->name('appointment');
 
 Route::fallback([KidController::class, '_404page']);
+
+Auth::routes(['verify'=>true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
