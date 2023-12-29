@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Teacher;
 use App\Models\Student;
 use App\Models\Subject;
+use App\Models\Testimonial;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
         Teacher::factory(10)->create();
         Student::factory(10)->create();
         Subject::factory(10)->create();
+        Testimonial::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Testimonial;
 
 class KidController extends Controller
 {
@@ -11,7 +12,8 @@ class KidController extends Controller
      */
     public function index()
     {
-        return view('kider');
+        $testimonials = Testimonial::get();
+        return view('kider', compact('testimonials'));
     }
 
     /**
@@ -66,6 +68,7 @@ class KidController extends Controller
     {
         return view('404page');
     }
+
 
     /**
      * Store a newly created resource in storage.

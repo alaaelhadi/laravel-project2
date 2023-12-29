@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KidController;
+use App\Http\Controllers\TestimonyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +44,15 @@ Route::fallback([KidController::class, '_404page']);
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('admin')->middleware('verified')->controller(TestimonyController::class)->group(function(){
+    Route::get('addTestimonial', 'create');
+    Route::post('testimonial', 'store')->name('testimony');
+    Route::get('testimonialsList', 'index');
+    Route::get('deletetestimonial/{id}', 'destroy');
+    Route::get('editTestimonial/{id}', 'edit');
+    Route::put('updateTestimonial/{id}', 'update')->name('updateTestimonial');
+    
+});
+
+Route::get('testimonial',[TestimonyController::class, 'testi'])->name('testimonial');
