@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Testimonials List</title>
+  <title>Trashed Testimonials List</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -11,7 +11,7 @@
 <body>
 
 <div class="container">
-  <h2>Testimonials List</h2>         
+  <h2>Trashed Testimonials List</h2>         
   <table class="table table-hover">
     <thead>
       <tr>
@@ -19,7 +19,7 @@
         <th>Position</th>
         <th>Testimony</th>
         <th>Image</th>
-        <th>Edit</th>
+        <th>Restore</th>
         <th>Delete</th>
       </tr>
     </thead>
@@ -31,8 +31,8 @@
         <td>{{ $testimonial->testimony }}</td>
         <td><img src="{{ asset('assets/images/'.$testimonial->image) }}" width="120px"></td>
         <!-- <td><img src="assets/img/{{ $testimonial->image }}" width="120px"></td> -->
-        <td><a href="editTestimonial/{{ $testimonial->id }}">Edit</a></td>
-        <td><a href="deletetestimonial/{{ $testimonial->id }}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
+        <td><a href="restoreTestimonial/{{ $testimonial->id }}" onclick="return confirm('Are you sure you want to restore?')">Restore</a></td>
+        <td><a href="finalDeletetestimonial/{{ $testimonial->id }}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
       </tr>
       @endforeach
     </tbody>

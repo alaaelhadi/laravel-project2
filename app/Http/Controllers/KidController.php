@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subject;
 use Illuminate\Http\Request;
 use App\Models\Testimonial;
+use App\Models\Teacher;
 
 class KidController extends Controller
 {
@@ -13,7 +15,9 @@ class KidController extends Controller
     public function index()
     {
         $testimonials = Testimonial::get();
-        return view('kider', compact('testimonials'));
+        $subjects = Subject::latest()->take(6)->get();
+        $teachers = Teacher::latest()->take(3)->get();
+        return view('kider', compact('testimonials', 'subjects', 'teachers'));
     }
 
     /**

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
-use App\Models\Client;
 use App\Models\Testimonial;
 use App\Traits\Common;
 use Illuminate\Support\Facades\Redirect;
@@ -52,7 +51,7 @@ class TestimonyController extends Controller
         ], $messages);
 
         //Add image
-        $filename = $this->uploadfile($request->image, 'assets/img');
+        $filename = $this->uploadfile($request->image, 'assets/images');
         $data['image'] = $filename;
 
         Testimonial::create($data);
@@ -93,7 +92,7 @@ class TestimonyController extends Controller
 
         //Update image
         if($request->hasFile('image')){
-            $filename = $this->uploadfile($request->image, 'assets/img');
+            $filename = $this->uploadfile($request->image, 'assets/images');
             $data['image'] = $filename;
         }
         
@@ -110,10 +109,29 @@ class TestimonyController extends Controller
         return redirect('admin/testimonialsList');
     }
 
+    public function trashed()
+    {
+        $testimonials = Testimonial::onlyTrashed()->get();
+        return view('trashedTestimonial', compact('testimonials'));
+    }
+
+    public function restore(string $id): RedirectResponse
+    {
+        Testimonial::where('id', $id)->restore();
+        return redirect('admin/testimonialsList');
+    }
+
+    public function finalDelete(string $id): RedirectResponse
+    {
+        Testimonial::where('id', $id)->forceDelete();
+        return redirect('admin/trashedTestimonial');
+    }
+
     public function messages()
     {
         return [
             'name.required' => 'Name is required',
+            'name.string' => 'Testimonial name must be string',
             'position.required' => 'Position is required',
             'testimony.required' => 'Testimony is required',
             'image.required' => 'Image is required',
