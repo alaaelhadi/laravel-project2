@@ -5,7 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Teacher;
-use App\Models\Student;
+use App\Models\Appointment;
 use App\Models\Subject;
 use App\Models\Testimonial;
 use Illuminate\Database\Seeder;
@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
         Teacher::factory(10)->create();
-        Student::factory(10)->create();
+        Appointment::factory(10)->create();
         Subject::factory(10)->create();
         Testimonial::factory(10)->create();
 

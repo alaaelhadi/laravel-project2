@@ -15,9 +15,9 @@
                         <h3>{{ $teacher->name }}</h3>
                         <p>{{ $teacher->position }}</p>
                         <div class="d-flex align-items-center">
-                            <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-square btn-primary  mx-1" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-square btn-primary  mx-1" href=""><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-square btn-primary mx-1" href="{{ $teacher->fb }}"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-primary  mx-1" href="{{ $teacher->x }}"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-primary  mx-1" href="{{ $teacher->insta }}"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
